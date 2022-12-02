@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Labb_CleanCode
+namespace Labb_CleanCode.Player
 {
     class PlayerData
     {
@@ -16,7 +16,7 @@ namespace Labb_CleanCode
 
         public PlayerData(string name, int guesses, string typeOfGame)
         {
-            this.Name = name;
+            Name = name;
             NumberOfGames = 1;
             totalGuess = guesses;
             TypeOfGame = typeOfGame;
@@ -34,7 +34,7 @@ namespace Labb_CleanCode
         }
 
 
-        public override bool Equals(Object p)
+        public override bool Equals(object p)
         {
             return Name.Equals(((PlayerData)p).Name);
         }

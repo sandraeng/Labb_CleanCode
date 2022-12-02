@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Labb_CleanCode
+namespace Labb_CleanCode.Hangman
 {
     public static class HangmanCharacter
     {

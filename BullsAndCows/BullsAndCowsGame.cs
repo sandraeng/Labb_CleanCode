@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Labb_CleanCode.Player;
 
-namespace Labb_CleanCode
+namespace Labb_CleanCode.BullsAndCows
 {
     public class BullsAndCowsGame
     {

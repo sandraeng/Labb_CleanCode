@@ -1,5 +1,5 @@
-﻿
-using Labb_CleanCode;
+﻿using Labb_CleanCode.BullsAndCows;
+using Labb_CleanCode.Hangman;
 
 namespace MooGame
 {

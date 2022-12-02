@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Labb_CleanCode.Player;
 
-namespace Labb_CleanCode
+namespace Labb_CleanCode.Hangman
 {
     public class HangmanGame
     {
@@ -33,7 +34,7 @@ namespace Labb_CleanCode
                     Console.Write(character + " ");
                 }
                 Console.Write("\n\n\tGuessed letters: ");
-                foreach(var letter in GuessedLetters)
+                foreach (var letter in GuessedLetters)
                 {
                     Console.Write(letter);
                 }
@@ -52,7 +53,7 @@ namespace Labb_CleanCode
                     Console.ReadLine();
                     return;
                 }
-                if(WrongGuesses >= 7)
+                if (WrongGuesses >= 7)
                 {
                     HangmanCharacter.TheHangman(WrongGuesses);
                     GameOver();
@@ -61,7 +62,7 @@ namespace Labb_CleanCode
                     GuessedLetters.Clear();
                     WrongGuesses = 0;
                     Console.ReadLine();
-                    return;     
+                    return;
                 }
             }
         }
@@ -74,7 +75,7 @@ namespace Labb_CleanCode
         private void CheckIfGuessIsCorrect(string userGuess)
         {
             bool rightGuess = false;
-            if(char.TryParse(userGuess, out char guess) && char.IsLetter(guess))
+            if (char.TryParse(userGuess, out char guess) && char.IsLetter(guess))
             {
                 if (GuessedLetters.Contains(guess))
                 {
@@ -91,7 +92,7 @@ namespace Labb_CleanCode
                             rightGuess = true;
                         }
                     }
-                    if(!rightGuess)
+                    if (!rightGuess)
                     {
                         GuessedLetters.Add(guess);
                         WrongGuesses++;
@@ -115,7 +116,7 @@ namespace Labb_CleanCode
             Random randomGenerator = new Random();
             WordToGuess = Words[randomGenerator.Next(Words.Length)];
             HiddenWord = WordToGuess.ToCharArray();
-            for(int i = 0; i < HiddenWord.Length; i++)
+            for (int i = 0; i < HiddenWord.Length; i++)
             {
                 HiddenWord[i] = '_';
             }
