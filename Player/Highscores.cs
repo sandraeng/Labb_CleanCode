@@ -24,10 +24,10 @@ namespace Labb_CleanCode.Player
             while ((scoreLine = getFromFile.ReadLine()) != null)
             {
                 string[] nameScoreAndGameType = scoreLine.Split(new string[] { "#&#" }, StringSplitOptions.None);
-                string name = nameScoreAndGameType[0];
+                string playerName = nameScoreAndGameType[0];
                 int guesses = Convert.ToInt32(nameScoreAndGameType[1]);
-                string game = nameScoreAndGameType[2];
-                PlayerData playerData = new PlayerData(name, guesses, game);
+                string gameName = nameScoreAndGameType[2];
+                PlayerData playerData = new PlayerData(playerName, guesses, gameName);
                 int pos = results.IndexOf(playerData);
                 if (pos < 0 && typeOfGame == playerData.TypeOfGame)
                 {
@@ -46,7 +46,7 @@ namespace Labb_CleanCode.Player
             {
                 if (p.TypeOfGame == typeOfGame)
                 {
-                    Console.WriteLine(string.Format("\t{0,-9}{1,5:D}{2,9:F2}{3,20}", p.Name, p.NumberOfGames, p.Average(), p.TypeOfGame));
+                    Console.WriteLine(string.Format("\t{0,-9}{1,5:D}{2,9:F2}{3,20}", p.PlayerName, p.NumberOfGames, p.Average(), p.TypeOfGame));
                 }
             }
             getFromFile.Close();

@@ -8,7 +8,7 @@ namespace Labb_CleanCode.Player
 {
     class PlayerData
     {
-        public string Name { get; private set; }
+        public string PlayerName { get; private set; }
         public int NumberOfGames { get; private set; }
         public string TypeOfGame { get; private set; }
         int totalGuess;
@@ -16,7 +16,7 @@ namespace Labb_CleanCode.Player
 
         public PlayerData(string name, int guesses, string typeOfGame)
         {
-            Name = name;
+            PlayerName = name;
             NumberOfGames = 1;
             totalGuess = guesses;
             TypeOfGame = typeOfGame;
@@ -36,13 +36,13 @@ namespace Labb_CleanCode.Player
 
         public override bool Equals(object p)
         {
-            return Name.Equals(((PlayerData)p).Name);
+            return PlayerName.Equals(((PlayerData)p).PlayerName);
         }
 
 
         public override int GetHashCode()
         {
-            return Name.GetHashCode();
+            return PlayerName.GetHashCode();
         }
     }
 }

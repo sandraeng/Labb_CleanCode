@@ -15,10 +15,11 @@ namespace Labb_CleanCode.BullsAndCows
             Console.Clear();
             Console.WriteLine("Enter your user name:\n");
             string playerName = Console.ReadLine();
+            BullsAndCowsController controller = new BullsAndCowsController();
 
             while (true)
             {
-                string numberToGuess = GenerateNumberToGuess();
+                string numberToGuess = controller.GenerateNumberToGuess();
 
 
                 Console.WriteLine("New game:\n");
@@ -27,14 +28,14 @@ namespace Labb_CleanCode.BullsAndCows
                 string currentUserGuess = Console.ReadLine();
 
                 int numberOfGuesses = 1;
-                string bbcc = CheckPlayerGuess(numberToGuess, currentUserGuess);
+                string bbcc = controller.CheckPlayerGuess(numberToGuess, currentUserGuess);
                 Console.WriteLine(bbcc + "\n");
                 while (bbcc != "BBBB,")
                 {
                     numberOfGuesses++;
                     currentUserGuess = Console.ReadLine();
                     Console.WriteLine(currentUserGuess + "\n");
-                    bbcc = CheckPlayerGuess(numberToGuess, currentUserGuess);
+                    bbcc = controller.CheckPlayerGuess(numberToGuess, currentUserGuess);
                     Console.WriteLine(bbcc + "\n");
                 }
                 Highscores.AddHighscore(GameName, playerName, numberOfGuesses);
@@ -47,47 +48,6 @@ namespace Labb_CleanCode.BullsAndCows
                 }
             }
         }
-
-        public string GenerateNumberToGuess()
-        {
-            Random numberGenerator = new Random();
-            string numberToGuess = "";
-            for (int i = 0; i < 4; i++)
-            {
-                int randomNumber = numberGenerator.Next(10);
-                string randomDigit = "" + randomNumber;
-                while (numberToGuess.Contains(randomDigit))
-                {
-                    randomNumber = numberGenerator.Next(10);
-                    randomDigit = "" + randomNumber;
-                }
-                numberToGuess = numberToGuess + randomDigit;
-            }
-            return numberToGuess;
-        }
-
-        public string CheckPlayerGuess(string numberToGuess, string playerGuess)
-        {
-            int cows = 0, bulls = 0;
-            playerGuess += "    ";     // if player entered less than 4 chars
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    if (numberToGuess[i] == playerGuess[j])
-                    {
-                        if (i == j)
-                        {
-                            bulls++;
-                        }
-                        else
-                        {
-                            cows++;
-                        }
-                    }
-                }
-            }
-            return "BBBB".Substring(0, bulls) + "," + "CCCC".Substring(0, cows);
-        }
+       
     }
 }
