@@ -13,19 +13,18 @@ namespace Labb_CleanCode.BullsAndCows
         public void PlayBullsAndCows()
         {
             Console.Clear();
-            Console.WriteLine("Enter your user name:\n");
-            string playerName = Console.ReadLine();
+            InputController inputController = new InputController();
             BullsAndCowsController controller = new BullsAndCowsController();
+            string playerName = inputController.CheckPlayerNameInput();
 
             while (true)
             {
                 string numberToGuess = controller.GenerateNumberToGuess();
 
-
                 Console.WriteLine("New game:\n");
                 //comment out or remove next line to play real games!
                 Console.WriteLine("For practice, number is: " + numberToGuess + "\n");
-                string currentUserGuess = Console.ReadLine();
+                string currentUserGuess = inputController.CheckGuessInput();
 
                 int numberOfGuesses = 1;
                 string bbcc = controller.CheckPlayerGuess(numberToGuess, currentUserGuess);
@@ -33,7 +32,7 @@ namespace Labb_CleanCode.BullsAndCows
                 while (bbcc != "BBBB,")
                 {
                     numberOfGuesses++;
-                    currentUserGuess = Console.ReadLine();
+                    currentUserGuess = inputController.CheckGuessInput();
                     Console.WriteLine(currentUserGuess + "\n");
                     bbcc = controller.CheckPlayerGuess(numberToGuess, currentUserGuess);
                     Console.WriteLine(bbcc + "\n");
@@ -41,7 +40,7 @@ namespace Labb_CleanCode.BullsAndCows
                 Highscores.AddHighscore(GameName, playerName, numberOfGuesses);
                 Highscores.ShowHighscores(GameName);
                 Console.WriteLine("Correct, it took " + numberOfGuesses + " guesses\nContinue?");
-                string answer = Console.ReadLine();
+                string answer = Console.ReadLine() ?? string.Empty;
                 if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
                 {
                     return;

@@ -12,10 +12,10 @@ namespace Labb_CleanCode.Hangman
         public void PlayHangman()
         {
             Console.Clear();
+            InputController inputController = new InputController();
             HangmanController controller = new HangmanController();
-            Console.WriteLine("\tWelcome to hangman, you have 7 guesses to get the word right!");
-            Console.WriteLine("\tEnter your user name:\n");
-            string playerName = Console.ReadLine();
+            Console.WriteLine("\tWelcome to hangman, you have 7 guesses to get the word right!\n");
+            string playerName = inputController.CheckPlayerNameInput();          
             controller.GetRandomWord();
 
             while (true)
@@ -32,7 +32,7 @@ namespace Labb_CleanCode.Hangman
                     Console.Write(letter);
                 }
                 Console.Write("\n\tYour guess: ");
-                string userGuess = Console.ReadLine().ToLower();
+                string userGuess = inputController.CheckGuessInput();
                 controller.CheckUserGuess(userGuess);
                 bool lettersStillHidden = controller.CheckWin();
                 if (!lettersStillHidden)
@@ -49,7 +49,7 @@ namespace Labb_CleanCode.Hangman
                 if (controller.WrongGuesses >= 7)
                 {
                     HangmanCharacter.TheHangman(controller.WrongGuesses);
-                    controller.GameOver();
+                    controller.GameOverText();
                     Console.WriteLine("\tYou are out of guesses, the word was {0}", controller.WordToGuess);
                     Highscores.AddHighscore(controller.GameName, playerName, controller.WrongGuesses);
                     Highscores.ShowHighscores(controller.GameName);

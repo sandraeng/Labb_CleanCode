@@ -10,8 +10,8 @@ namespace Labb_CleanCode.Hangman
     public class HangmanController
     {
         public string[] Words = { "deliver", "recognise", "regain", "supervise", "consider", "stop", "submit", "plan", "forget", "break" };
-        public string? WordToGuess;
-        public char[]? HiddenWord;
+        public string WordToGuess = "";
+        public char[] HiddenWord = {};
         public List<char> GuessedLetters = new List<char>();
         public int WrongGuesses = 0;
         public string GameName = "Hangman";
@@ -70,7 +70,7 @@ namespace Labb_CleanCode.Hangman
             }
         }
 
-        public void GameOver()
+        public void GameOverText()
         {
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("     GGGG                                       OOOOOO         ");
