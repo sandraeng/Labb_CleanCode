@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Labb_CleanCode.Interface;
 using Labb_CleanCode.Player;
 
 namespace Labb_CleanCode.BullsAndCows
 {
-    public class BullsAndCowsGame
+    public class BullsAndCowsGame : IGame
     {
-        public string GameName = "Bulls and Cows";
-        public void PlayBullsAndCows()
+        static private int objectCount = 0;
+        public BullsAndCowsGame()
+        {          
+            if(objectCount > 0)
+            {
+                throw new Exception("More than 1 instance created");
+            }
+            objectCount++;
+        }
+        public void PlayGame()
         {
             Console.Clear();
             InputController inputController = new InputController();
@@ -37,12 +46,13 @@ namespace Labb_CleanCode.BullsAndCows
                     bbcc = controller.CheckPlayerGuess(numberToGuess, currentUserGuess);
                     Console.WriteLine(bbcc + "\n");
                 }
-                Highscores.AddHighscore(GameName, playerName, numberOfGuesses);
-                Highscores.ShowHighscores(GameName);
+                Highscores.AddHighscore(controller.GameName, playerName, numberOfGuesses);
+                Highscores.ShowHighscores(controller.GameName);
                 Console.WriteLine("Correct, it took " + numberOfGuesses + " guesses\nContinue?");
                 string answer = Console.ReadLine() ?? string.Empty;
                 if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
                 {
+                    objectCount = 0;
                     return;
                 }
             }

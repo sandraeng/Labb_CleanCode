@@ -11,26 +11,26 @@ namespace Labb_CleanCode.Player
         public string PlayerName { get; private set; }
         public int NumberOfGames { get; private set; }
         public string TypeOfGame { get; private set; }
-        int totalGuess;
+        int TotalGuesses;
 
 
         public PlayerData(string name, int guesses, string typeOfGame)
         {
             PlayerName = name;
             NumberOfGames = 1;
-            totalGuess = guesses;
+            TotalGuesses = guesses;
             TypeOfGame = typeOfGame;
         }
 
         public void Update(int guesses)
         {
-            totalGuess += guesses;
+            TotalGuesses += guesses;
             NumberOfGames++;
         }
 
         public double Average()
         {
-            return (double)totalGuess / NumberOfGames;
+            return (double)TotalGuesses / NumberOfGames;
         }
 
 

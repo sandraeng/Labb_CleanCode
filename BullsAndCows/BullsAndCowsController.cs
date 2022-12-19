@@ -8,6 +8,8 @@ namespace Labb_CleanCode.BullsAndCows
 {
     public class BullsAndCowsController
     {
+        public string GameName = "Bulls and Cows";
+
         public string GenerateNumberToGuess()
         {
             Random numberGenerator = new Random();

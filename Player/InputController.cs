@@ -49,7 +49,7 @@ namespace Labb_CleanCode.Player
             return userGuess;
         }
 
-        public bool CheckForEmptyOrNullInput(string input)
+        private bool CheckForEmptyOrNullInput(string input)
         {
             if (string.IsNullOrEmpty(input))
             {

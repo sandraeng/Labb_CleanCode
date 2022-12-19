@@ -1,5 +1,7 @@
 ﻿using Labb_CleanCode.BullsAndCows;
+using Labb_CleanCode.Factory;
 using Labb_CleanCode.Hangman;
+using Labb_CleanCode.Interface;
 
 namespace MooGame
 {
@@ -20,13 +22,13 @@ namespace MooGame
                 {
                     if(playerChoice == 1)
                     {
-                        BullsAndCowsGame game = new BullsAndCowsGame();
-                        game.PlayBullsAndCows();
+                        IGame game = GameFactory.StartNewGame("Bulls and Cows");
+                        game.PlayGame();                        
                     }
                     else if(playerChoice == 2)
                     {
-                        HangmanGame game = new HangmanGame();
-                        game.PlayHangman();
+                        IGame game = GameFactory.StartNewGame("Hangman");
+                        game.PlayGame();
                     }
                     else if(playerChoice == 3)
                     {
