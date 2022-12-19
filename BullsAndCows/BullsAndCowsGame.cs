@@ -10,14 +10,17 @@ namespace Labb_CleanCode.BullsAndCows
 {
     public class BullsAndCowsGame : IGame
     {
-        static private int objectCount = 0;
+
+        public int instanceCount { get; set; } = 0;
+
+
         public BullsAndCowsGame()
         {          
-            if(objectCount > 0)
+            if(instanceCount > 0)
             {
                 throw new Exception("More than 1 instance created");
             }
-            objectCount++;
+            instanceCount++;
         }
         public void PlayGame()
         {
@@ -52,7 +55,7 @@ namespace Labb_CleanCode.BullsAndCows
                 string answer = Console.ReadLine() ?? string.Empty;
                 if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
                 {
-                    objectCount = 0;
+                    instanceCount = 0;
                     return;
                 }
             }

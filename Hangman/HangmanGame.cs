@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Labb_CleanCode.Interface;
 using Labb_CleanCode.Player;
 
@@ -10,14 +6,15 @@ namespace Labb_CleanCode.Hangman
 {
     public class HangmanGame: IGame
     {
-        static private int objectCount = 0;
+        public int instanceCount { get; set; } = 0;
+
         public HangmanGame()
         {
-            if (objectCount > 0)
+            if (instanceCount > 0)
             {
                 throw new Exception("More than 1 instance created");
             }
-            objectCount++;
+            instanceCount++;
         }
         public void PlayGame()
         {
@@ -54,7 +51,7 @@ namespace Labb_CleanCode.Hangman
                     controller.GuessedLetters.Clear();
                     controller.WrongGuesses = 0;
                     Console.ReadLine();
-                    objectCount = 0;
+                    instanceCount = 0;
                     return;
                 }
                 if (controller.WrongGuesses >= 7)
@@ -68,7 +65,7 @@ namespace Labb_CleanCode.Hangman
                     controller.GuessedLetters.Clear();
                     controller.WrongGuesses = 0;
                     Console.ReadLine();
-                    objectCount = 0;
+                    instanceCount = 0;
                     return;
                 }
             }

@@ -1,6 +1,5 @@
-﻿using Labb_CleanCode.BullsAndCows;
+﻿
 using Labb_CleanCode.Factory;
-using Labb_CleanCode.Hangman;
 using Labb_CleanCode.Interface;
 
 namespace MooGame

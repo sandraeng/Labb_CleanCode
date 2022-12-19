@@ -9,7 +9,7 @@ namespace Labb_CleanCode.Hangman
 {
     public class HangmanController
     {
-        public string[] Words = { "deliver", "recognise", "regain", "supervise", "consider", "stop", "submit", "plan", "forget", "break" };
+        public string[] Words = { "deliver", "recognise", "regain", "supervise", "consider", "stop", "submit", "planning", "forget", "break" };
         public string WordToGuess = "";
         public char[] HiddenWord = {};
         public List<char> GuessedLetters = new List<char>();

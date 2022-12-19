@@ -1,5 +1,6 @@
 ﻿using Labb_CleanCode.BullsAndCows;
 using Labb_CleanCode.Hangman;
+using Labb_CleanCode.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
