@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Labb_CleanCode.MockData;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
 namespace Labb_CleanCode.BullsAndCows
@@ -14,6 +15,13 @@ namespace Labb_CleanCode.BullsAndCows
             BullsAndCowsController controller = new BullsAndCowsController();
             var generatedNumber = controller.GenerateNumberToGuess();
             Assert.AreEqual(randomNumbers.Count(), generatedNumber.ToArray().Distinct().Count());
+        }
+        [TestMethod()]
+        public void CheckPlayerGuessForWin()
+        {
+            MockDataUserInput mockData = new MockDataUserInput();
+            var playerGuess = mockData.PlayerGuessCorrectBullsAndCows();
+            Assert.AreEqual("BBBB", playerGuess);
         }
     }
 }
